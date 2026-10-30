@@ -50,36 +50,23 @@ export function Footer() {
         </div>
 
         <nav aria-label="Footer">
-          <p className="font-mono text-[11px] tracking-[0.24em] text-primary uppercase">
-            Navigate
-          </p>
+          <p className="font-mono text-[11px] tracking-[0.24em] text-primary uppercase">Navigate</p>
           <ul className="mt-4 space-y-2 text-sm">
             {navLinks.map((l) => (
               <li key={l.label}>
                 <Link
                   to={l.to}
-                  hash={l.hash}
                   className="text-muted-foreground transition-colors hover:text-primary"
                 >
                   {l.label}
                 </Link>
               </li>
             ))}
-            <li>
-              <Link
-                to="/showcase"
-                className="text-muted-foreground transition-colors hover:text-primary"
-              >
-                Showcase
-              </Link>
-            </li>
           </ul>
         </nav>
 
         <div>
-          <p className="font-mono text-[11px] tracking-[0.24em] text-primary uppercase">
-            Contact
-          </p>
+          <p className="font-mono text-[11px] tracking-[0.24em] text-primary uppercase">Contact</p>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             <li>
               <a className="hover:text-primary" href={`mailto:${site.email}`}>
@@ -87,7 +74,12 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a className="hover:text-primary" href={site.whatsapp} target="_blank" rel="noreferrer">
+              <a
+                className="hover:text-primary"
+                href={site.whatsapp}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {site.phone}
               </a>
             </li>
@@ -98,7 +90,7 @@ export function Footer() {
 
       <div className="mx-auto mt-10 flex max-w-6xl flex-col gap-2 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} Rajeev Keer. All rights reserved.</p>
-        <p>Made with ❤️ by Rajeev Keer</p>
+        <p>Video editing · Thumbnails · Motion graphics</p>
       </div>
     </footer>
   );

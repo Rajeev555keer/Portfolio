@@ -30,12 +30,7 @@ export function Navbar() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed inset-x-0 top-0 z-50 flex justify-center px-4"
-      >
+      <header className="animate-drop fixed inset-x-0 top-0 z-50 flex justify-center px-4">
         <nav
           aria-label="Main"
           className={cn(
@@ -43,12 +38,9 @@ export function Navbar() {
             scrolled ? "px-4 py-2 shadow-[var(--shadow-elevated)]" : "px-5 py-3",
           )}
         >
-          <Link
-            to="/"
-            className="font-display text-sm font-semibold tracking-tight sm:text-base"
-          >
-            Rajeev<span className="text-primary">.</span>
-            <span className="hidden sm:inline"> Keer</span>
+          <Link to="/" className="font-display text-sm font-semibold tracking-tight sm:text-base">
+            Rajeev Keer
+            <span className="text-primary">.</span>
           </Link>
 
           <ul className="hidden items-center gap-1 lg:flex">
@@ -56,8 +48,7 @@ export function Navbar() {
               <li key={l.label}>
                 <Link
                   to={l.to}
-                  hash={l.hash}
-                  activeOptions={{ exact: l.to === "/" && !l.hash, includeHash: false }}
+                  activeOptions={{ exact: l.to === "/" }}
                   className="group relative rounded-full px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground data-[status=active]:text-foreground"
                 >
                   {l.label}
@@ -72,9 +63,13 @@ export function Navbar() {
               href={site.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="hidden rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition-transform duration-300 hover:scale-[1.03] sm:inline-flex"
+              className="hidden items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition-transform duration-300 hover:scale-[1.03] sm:inline-flex"
             >
-              Let's Work Together
+              <span className="relative flex size-1.5" aria-hidden="true">
+                <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary-foreground/60" />
+                <span className="relative inline-flex size-1.5 rounded-full bg-primary-foreground" />
+              </span>
+              Hire Me
             </a>
             <button
               type="button"
@@ -87,7 +82,7 @@ export function Navbar() {
             </button>
           </div>
         </nav>
-      </motion.header>
+      </header>
 
       <AnimatePresence>
         {open ? (
@@ -109,9 +104,9 @@ export function Navbar() {
                 >
                   <Link
                     to={l.to}
-                    hash={l.hash}
+                    activeOptions={{ exact: l.to === "/" }}
                     onClick={() => setOpen(false)}
-                    className="font-display block border-b border-border py-4 text-3xl font-semibold tracking-tight"
+                    className="font-display block border-b border-border py-4 text-3xl font-semibold tracking-tight data-[status=active]:text-primary"
                   >
                     {l.label}
                   </Link>

@@ -1,9 +1,12 @@
-import thumb1 from "@/assets/project-thumb-1.mp4";
-import thumb2 from "@/assets/project-thumb-2.jpg";
-import thumb3 from "@/assets/project-thumb-3.jpg";
-import cinematic from "@/assets/cinematic.mp4";
+import theAlarm from "@/assets/video-the-alarm.mp4";
+import divinity from "@/assets/video-3d-divinity.mp4";
+import horrorThumb from "@/assets/thumb-horror-edit.jpg";
+import fsDownloadThumb from "@/assets/thumb-fs23-how-to-download.jpg";
+import fsWhatThumb from "@/assets/thumb-fs23-what.jpg";
+import fsModThumb from "@/assets/thumb-fs23-mod.jpg";
+import tractorsThumb from "@/assets/thumb-indian-tractors.jpg";
 
-export type ProjectCategory = "Videos" | "Reels" | "Thumbnails" | "Graphics";
+export type ProjectCategory = "Videos" | "Thumbnails";
 
 export type Project = {
   id: string;
@@ -11,120 +14,92 @@ export type Project = {
   category: ProjectCategory;
   description: string;
   tools: string[];
-  image: string; 
+  /** Still image. Video projects without one show a frame of the clip instead. */
+  image?: string;
   video?: string;
+  /** Second of the clip to show as the card poster when there is no image. */
+  posterTime?: number;
+  format: string;
   featured?: boolean;
-  stat?: string;
 };
 
 export const projects: Project[] = [
   {
-    id: "gaming-thumbnail",
-    title: "Gaming Channel Thumbnails",
+    id: "the-alarm",
+    title: "The Alarm — Cinematic Teaser",
+    category: "Videos",
+    description:
+      "A short cinematic teaser built on mood: a cold teal grade, slow push-ins, practical light and a bold title card timed to the sound design.",
+    tools: ["DaVinci Resolve", "After Effects"],
+    video: theAlarm,
+    posterTime: 7,
+    format: "16:9 · 12s",
+    featured: true,
+  },
+  {
+    id: "3d-divinity",
+    title: "When 3D Art Meets Divinity",
+    category: "Videos",
+    description:
+      "A 3D cinematic that moves from a temple environment to a glowing Shiva reveal — camera moves, light rays and a slow, reverent edit rhythm.",
+    tools: ["Unreal Engine", "DaVinci Resolve"],
+    video: divinity,
+    posterTime: 16,
+    format: "16:9 · 23s",
+    featured: true,
+  },
+  {
+    id: "horror-edit",
+    title: "Horror Edit",
     category: "Thumbnails",
     description:
-      "High-CTR YouTube thumbnail set built for a gaming channel — bold silhouettes, cyan energy lighting and clean focal hierarchy so the frame reads instantly at small sizes.",
-    tools: ["Photoshop", "Canva"],
-    image: thumb1,
+      "Moonlit horror thumbnail — subject lit by a warm lantern against a cold room, with the ghost placed in the second read so the frame tells a story.",
+    tools: ["Photoshop"],
+    image: horrorThumb,
+    format: "YouTube · 16:9",
     featured: true,
-    stat: "CTR focused",
   },
-
   {
-    id: "cinematic-edit",
-    title: "Cinematic Travel Edit",
-    category: "Videos",
+    id: "fs23-how-to-download",
+    title: "Farming Simulator 23 — How to Download",
+    category: "Thumbnails",
     description:
-      "Full post-production pass: story assembly, pacing, teal & orange color grade, sound design and cinematic transitions cut in DaVinci Resolve.",
-    tools: ["DaVinci Resolve", "After Effects"],
-    image: thumb2,
-
-    // 👇 Ye line add ki hai
-    video: cinematic,
-
+      "Bright, clean gameplay thumbnail with a cut-out subject and a pointing gesture that leads the eye straight to the tractor and title.",
+    tools: ["Photoshop"],
+    image: fsDownloadThumb,
+    format: "YouTube · 16:9",
     featured: true,
-    stat: "4K / 24fps",
   },
-
   {
-    id: "night-reel",
-    title: "Night City Reel",
-    category: "Reels",
+    id: "fs23-what",
+    title: "Farming Simulator 23 — “What?!”",
+    category: "Thumbnails",
     description:
-      "High-retention vertical reel with beat-synced cuts, speed ramps and motion text — built for Instagram and YouTube Shorts.",
-    tools: ["CapCut", "Premiere Pro"],
-    image: thumb3,
-    featured: true,
-    stat: "9:16 vertical",
+      "Curiosity-first thumbnail — a reaction pose, a hand-drawn speech bubble and a mid-air tractor create a question the viewer wants answered.",
+    tools: ["Photoshop"],
+    image: fsWhatThumb,
+    format: "YouTube · 16:9",
   },
-
   {
-    id: "farming-series",
-    title: "Gaming & Farming Series",
-    category: "Videos",
+    id: "fs23-mod",
+    title: "Farming Simulator 23 Mod — Direct Download",
+    category: "Thumbnails",
     description:
-      "Long-form YouTube series editing — commentary cleanup, B-roll layering, on-screen graphics and consistent channel branding across every episode.",
-    tools: ["Premiere Pro", "Photoshop"],
-    image: thumb1,
-    stat: "Long-form",
+      "Big outlined headline, a handwritten “23 mod” callout and an arrow that ties the text to the gameplay — readable even at phone size.",
+    tools: ["Photoshop"],
+    image: fsModThumb,
+    format: "YouTube · 16:9",
   },
-
   {
-    id: "motion-pack",
-    title: "Motion Graphics Pack",
-    category: "Graphics",
+    id: "indian-tractors",
+    title: "Indian Tractors — Mobile Gameplay",
+    category: "Thumbnails",
     description:
-      "Reusable lower-thirds, subscribe animations and title cards designed in After Effects to give a channel one consistent motion language.",
-    tools: ["After Effects", "Illustrator"],
-    image: thumb2,
-    stat: "Brand kit",
-  },
-
-  {
-    id: "social-graphics",
-    title: "Social Media Graphics",
-    category: "Graphics",
-    description:
-      "Post and story graphics designed as a system — typography scale, colour rules and layout grid so every post looks like the same brand.",
-    tools: ["Photoshop", "Canva"],
-    image: thumb3,
-    stat: "Design system",
-  },
-
-  {
-    id: "shorts-batch",
-    title: "Shorts Batch Production",
-    category: "Reels",
-    description:
-      "Weekly batch of short-form cuts pulled from long-form footage, each with hook-first structure, captions and punchy sound design.",
-    tools: ["CapCut", "DaVinci Resolve"],
-    image: thumb3,
-    stat: "Weekly batch",
-  },
-
-  {
-    id: "podcast-edit",
-    title: "Podcast / Talking Head Edit",
-    category: "Videos",
-    description:
-      "Multi-cam talking-head editing with silence removal, dynamic zooms, captions and clean audio mastering.",
-    tools: ["Premiere Pro", "DaVinci Resolve"],
-    image: thumb2,
-    stat: "Multi-cam",
+      "High-contrast yellow type stacked over a sunny gameplay scene, with the subject framed on the right to balance the composition.",
+    tools: ["Photoshop"],
+    image: tractorsThumb,
+    format: "YouTube · 16:9",
   },
 ];
 
-export const projectFilters = [
-  "All",
-  "Videos",
-  "Reels",
-  "Thumbnails",
-  "Graphics",
-] as const;
-
-export const showcaseStats = [
-  { value: "150+", label: "Projects delivered" },
-  { value: "4", label: "Years editing" },
-  { value: "30+", label: "Happy creators" },
-  { value: "10M+", label: "Views edited" },
-];
+export const projectFilters = ["All", "Videos", "Thumbnails"] as const;

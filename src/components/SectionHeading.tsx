@@ -1,12 +1,14 @@
 import { Reveal } from "./Reveal";
 
 export function SectionHeading({
+  id,
   eyebrow,
   title,
   highlight,
   description,
   align = "left",
 }: {
+  id?: string;
   eyebrow?: string;
   title: string;
   highlight?: string;
@@ -24,7 +26,7 @@ export function SectionHeading({
         </Reveal>
       ) : null}
       <Reveal delay={0.05}>
-        <h2 className="mt-4 text-3xl leading-[1.05] font-semibold sm:text-4xl md:text-5xl">
+        <h2 id={id} className="mt-4 text-3xl leading-[1.05] font-semibold sm:text-4xl md:text-5xl">
           {title} {highlight ? <span className="text-gradient">{highlight}</span> : null}
         </h2>
       </Reveal>

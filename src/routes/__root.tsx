@@ -16,7 +16,6 @@ import { Footer } from "@/components/Footer";
 import { Ambient } from "@/components/Ambient";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { CustomCursor } from "@/components/CustomCursor";
-import { Loader } from "@/components/Loader";
 
 function NotFoundComponent() {
   return (
@@ -90,13 +89,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Cinematic videos, viral reels, YouTube content and professional graphics by Rajeev Keer.",
       },
       { name: "author", content: "Rajeev Keer" },
+      { name: "theme-color", content: "#0b1117" },
       { property: "og:site_name", content: "Rajeev Keer" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=JetBrains+Mono:wght@400;500&display=swap",
@@ -133,7 +137,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Loader />
       <Ambient />
       <ScrollProgress />
       <CustomCursor />

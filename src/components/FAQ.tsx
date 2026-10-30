@@ -14,6 +14,7 @@ export function FAQ() {
     <section id="faq" className="px-4 py-24" aria-labelledby="faq-title">
       <div className="mx-auto max-w-3xl">
         <SectionHeading
+          id="faq-title"
           eyebrow="Good to know"
           title="Frequently asked"
           highlight="questions"
@@ -34,7 +35,10 @@ export function FAQ() {
                   >
                     {f.q}
                     <span className="grid size-8 shrink-0 place-items-center rounded-full border border-border text-primary">
-                      <motion.span animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
+                      <motion.span
+                        animate={{ rotate: isOpen ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
                         {isOpen ? <Minus className="size-4" /> : <Plus className="size-4" />}
                       </motion.span>
                     </span>

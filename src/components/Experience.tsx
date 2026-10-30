@@ -16,17 +16,14 @@ export function Experience() {
   });
 
   return (
-    <section
-      id="experience"
-      className="px-4 py-24"
-      aria-labelledby="experience-title"
-    >
+    <section id="experience" className="px-4 py-24" aria-labelledby="experience-title">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
+          id="experience-title"
           eyebrow="Journey"
           title="My"
           highlight="Experience"
-          description="From first timeline to cinematic edits and cyber security — four years of building craft."
+          description="From the first timeline in 2022 to cinematic edits, reels and thumbnails for creators."
         />
 
         <div ref={ref} className="relative mt-14 pl-8 sm:pl-12">

@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import { X, ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect } from "react";
 import type { Project } from "@/data/projects";
 
@@ -61,36 +61,29 @@ export function ShowcaseModal({
               <X className="size-4" />
             </button>
 
-            <div className="relative aspect-video w-full overflow-hidden rounded-t-3xl bg-secondary">
+            <div className="relative aspect-video w-full overflow-hidden rounded-t-3xl bg-black">
               {project.video ? (
-                <iframe
+                <video
+                  key={project.id}
                   src={project.video}
-                  title={project.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                  className="size-full"
+                  poster={project.image}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="size-full object-contain"
                 />
               ) : (
-                <>
-                  <img
-                    src={project.image}
-                    alt={`${project.title} preview`}
-                    loading="lazy"
-                    className="size-full object-cover"
-                  />
-                  {project.category === "Videos" || project.category === "Reels" ? (
-                    <span className="glass absolute inset-0 m-auto grid size-16 place-items-center rounded-full text-primary">
-                      <Play className="size-6 fill-current" />
-                    </span>
-                  ) : null}
-                </>
+                <img
+                  src={project.image}
+                  alt={`${project.title} — full size`}
+                  className="size-full object-contain"
+                />
               )}
             </div>
 
             <div className="p-6 sm:p-8">
               <span className="font-mono text-[11px] tracking-[0.28em] text-primary uppercase">
-                {project.category}
+                {project.category} · {project.format}
               </span>
               <h2 className="mt-3 text-2xl font-semibold sm:text-3xl">{project.title}</h2>
               <p className="mt-3 text-sm text-muted-foreground sm:text-base">

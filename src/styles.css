@@ -85,7 +85,12 @@
   --sidebar-ring: oklch(0.84 0.148 195);
 
   --glass-border: oklch(1 0 0 / 12%);
-  --gradient-cyan: linear-gradient(120deg, oklch(0.92 0.12 190), oklch(0.82 0.15 198) 45%, oklch(0.7 0.13 235));
+  --gradient-cyan: linear-gradient(
+    120deg,
+    oklch(0.92 0.12 190),
+    oklch(0.82 0.15 198) 45%,
+    oklch(0.7 0.13 235)
+  );
   --gradient-surface: linear-gradient(160deg, oklch(1 0 0 / 7%), oklch(1 0 0 / 2%));
   --glow-cyan: 0 0 0 1px oklch(0.84 0.148 195 / 22%), 0 18px 60px -18px oklch(0.84 0.148 195 / 45%);
   --shadow-elevated: 0 30px 80px -30px oklch(0 0 0 / 80%);
@@ -110,7 +115,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: -0.03em;
   }
@@ -126,8 +134,12 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.001ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.001ms !important;
@@ -165,18 +177,64 @@
 }
 
 @keyframes float-soft {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.75; }
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+
+/* Entrance animations that run from CSS alone, so above-the-fold content
+   shows on first paint instead of waiting for JavaScript to hydrate. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-rise {
+  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility animate-drop {
+  animation: drop 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes scan {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(300%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(300%);
+  }
 }
 
 @utility animate-float-soft {

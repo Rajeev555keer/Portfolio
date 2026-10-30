@@ -17,6 +17,7 @@ export function Pricing() {
     <section id="pricing" className="px-4 py-24" aria-labelledby="pricing-title">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
+          id="pricing-title"
           eyebrow="Pricing"
           title="Simple, honest"
           highlight="pricing"
@@ -39,7 +40,9 @@ export function Pricing() {
                 aria-pressed={mode === o.id}
                 className={cn(
                   "relative min-h-10 rounded-full px-5 text-sm transition-colors duration-300",
-                  mode === o.id ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground",
+                  mode === o.id
+                    ? "text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground",
                 )}
               >
                 {mode === o.id ? (
@@ -133,16 +136,26 @@ export function Pricing() {
               <caption className="sr-only">Feature comparison between plans</caption>
               <thead>
                 <tr className="border-b border-border text-muted-foreground">
-                  <th scope="col" className="p-4 font-medium">Feature</th>
-                  <th scope="col" className="p-4 font-medium">Reels</th>
-                  <th scope="col" className="p-4 font-medium">YouTube</th>
-                  <th scope="col" className="p-4 font-medium">Cinematic</th>
+                  <th scope="col" className="p-4 font-medium">
+                    Feature
+                  </th>
+                  <th scope="col" className="p-4 font-medium">
+                    Reels
+                  </th>
+                  <th scope="col" className="p-4 font-medium">
+                    YouTube
+                  </th>
+                  <th scope="col" className="p-4 font-medium">
+                    Cinematic
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {comparison.map((row) => (
                   <tr key={row.feature} className="border-b border-border/60 last:border-0">
-                    <th scope="row" className="p-4 font-normal">{row.feature}</th>
+                    <th scope="row" className="p-4 font-normal">
+                      {row.feature}
+                    </th>
                     {[row.starter, row.pro, row.cinematic].map((v, i) => (
                       <td key={i} className="p-4">
                         {v ? (

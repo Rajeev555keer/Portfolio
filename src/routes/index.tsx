@@ -4,27 +4,22 @@ import { Software } from "@/components/Software";
 import { Experience } from "@/components/Experience";
 import { Projects } from "@/components/Projects";
 import { Services } from "@/components/Services";
-import { Testimonials } from "@/components/Testimonials";
+import { Process } from "@/components/Process";
 import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
+import { projects } from "@/data/projects";
+import { pageMeta } from "@/data/site";
 
-const title = "Rajeev Keer — Video Editor & Graphic Designer";
-const description =
-  "Rajeev Keer creates cinematic videos, viral reels, YouTube content and professional graphics. Video editing, thumbnail design and motion graphics for creators and brands.";
+const featured = projects.filter((p) => p.featured);
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
+  head: () =>
+    pageMeta({
+      title: "Rajeev Keer — Video Editor & Graphic Designer",
+      description:
+        "Rajeev Keer creates cinematic videos, viral reels, YouTube content and professional graphics. Video editing, thumbnail design and motion graphics for creators and brands.",
+      path: "/",
+    }),
   component: Index,
 });
 
@@ -32,11 +27,11 @@ function Index() {
   return (
     <>
       <Hero />
+      <Projects items={featured} withPortfolioLink />
+      <Services />
+      <Process />
       <Software />
       <Experience />
-      <Projects />
-      <Services />
-      <Testimonials />
       <FAQ />
       <Contact />
     </>

@@ -64,33 +64,49 @@ export const plans: Plan[] = [
 
 export const addOns = [
   { name: "YouTube Thumbnail", price: "₹299", note: "High-CTR custom design" },
-  { name: "Motion Graphics Pack", price: "₹1,299", note: "Titles, lower-thirds, outro" },
+  {
+    name: "Motion Graphics Pack",
+    price: "₹1,299",
+    note: "Titles, lower-thirds, outro",
+  },
   { name: "Rush Delivery (24h)", price: "+40%", note: "Jump the queue" },
   { name: "Social Graphics Set", price: "₹899", note: "10 posts / stories" },
-  { name: "Channel Branding Kit", price: "₹2,499", note: "Banner, logo, templates" },
+  {
+    name: "Channel Branding Kit",
+    price: "₹2,499",
+    note: "Banner, logo, templates",
+  },
   { name: "Subtitles / Captions", price: "₹199", note: "Per video, styled" },
 ];
 
 export const comparison = [
   { feature: "Colour grading", starter: false, pro: true, cinematic: true },
   { feature: "Motion graphics", starter: false, pro: true, cinematic: true },
-  { feature: "Captions & subtitles", starter: true, pro: true, cinematic: true },
+  {
+    feature: "Captions & subtitles",
+    starter: true,
+    pro: true,
+    cinematic: true,
+  },
   { feature: "Free thumbnail", starter: false, pro: true, cinematic: true },
-  { feature: "Unlimited revisions", starter: false, pro: false, cinematic: true },
+  {
+    feature: "Unlimited revisions",
+    starter: false,
+    pro: false,
+    cinematic: true,
+  },
   { feature: "Priority support", starter: false, pro: true, cinematic: true },
 ];
 
 export const services = [
   {
     title: "Video Editing",
-    description:
-      "YouTube videos, cinematic edits, storytelling and professional post-production.",
+    description: "YouTube videos, cinematic edits, storytelling and professional post-production.",
     icon: "Film",
   },
   {
     title: "Reels & Shorts",
-    description:
-      "High-retention short-form content optimized for social media.",
+    description: "High-retention short-form content optimized for social media.",
     icon: "Smartphone",
   },
   {
@@ -110,8 +126,7 @@ export const services = [
   },
   {
     title: "Creative Support",
-    description:
-      "Long-term editing and creative support for creators and brands.",
+    description: "Long-term editing and creative support for creators and brands.",
     icon: "Handshake",
   },
 ] as const;
@@ -135,7 +150,7 @@ export const faqs = [
   },
   {
     q: "Do you work on a monthly basis?",
-    a: "Absolutely — monthly retainers are the best value and guarantee you a slot in my schedule every week. Switch the toggle above to see retainer pricing.",
+    a: "Yes — a monthly retainer reserves a fixed slot in my schedule every week, so your uploads never wait in a queue. See the Monthly Retainer option on the pricing page.",
   },
   {
     q: "How do payments work?",
@@ -160,22 +175,40 @@ export const experience = [
     body: "Working with DaVinci Resolve, Premiere Pro, After Effects and CapCut. Created cinematic videos, reels and social media content.",
   },
   {
-    year: "2025",
-    title: "Cyber Security Learning",
-    body: "Started cybersecurity journey. Learning Kali Linux, Networking, Penetration Testing and Ethical Hacking.",
+    year: "Now",
+    title: "Open for Freelance Projects",
+    body: "Editing videos, reels and thumbnails for creators and brands — one-off projects or a fixed weekly slot on a monthly retainer.",
+  },
+];
+
+export const process = [
+  {
+    step: "01",
+    title: "Share the brief",
+    body: "Send your footage on Google Drive, Dropbox or WeTransfer with references, music and any brand assets.",
   },
   {
-    year: "2026",
-    title: "Creative + Cyber Security Portfolio",
-    body: "Combining Video Editing, Graphic Design and Cyber Security skills to build professional solutions.",
+    step: "02",
+    title: "First cut",
+    body: "You get a clear timeline up front. Reels land in 24–48h, long-form YouTube edits in 48–72h.",
+  },
+  {
+    step: "03",
+    title: "Revisions",
+    body: "Pacing, text, music and colour notes go into revisions — two, three or unlimited depending on your plan.",
+  },
+  {
+    step: "04",
+    title: "Final delivery",
+    body: "A finished, upload-ready export plus the thumbnail if it's part of your package.",
   },
 ];
 
 export const software = [
-  { name: "DaVinci Resolve", use: "Editing & colour grading", level: 95, short: "DR" },
-  { name: "Premiere Pro", use: "Long-form editing", level: 92, short: "Pr" },
-  { name: "After Effects", use: "Motion graphics & VFX", level: 85, short: "Ae" },
-  { name: "CapCut", use: "Fast short-form cuts", level: 90, short: "CC" },
-  { name: "Photoshop", use: "Thumbnails & graphics", level: 88, short: "Ps" },
-  { name: "Canva", use: "Quick social design", level: 82, short: "Cv" },
+  { name: "DaVinci Resolve", use: "Editing & colour grading", short: "DR" },
+  { name: "Premiere Pro", use: "Long-form editing", short: "Pr" },
+  { name: "After Effects", use: "Motion graphics & VFX", short: "Ae" },
+  { name: "CapCut", use: "Fast short-form cuts", short: "CC" },
+  { name: "Photoshop", use: "Thumbnails & graphics", short: "Ps" },
+  { name: "Canva", use: "Quick social design", short: "Cv" },
 ];

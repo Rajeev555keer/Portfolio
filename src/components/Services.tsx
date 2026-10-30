@@ -10,6 +10,7 @@ export function Services() {
     <section id="services" className="px-4 py-24" aria-labelledby="services-title">
       <div className="mx-auto max-w-6xl">
         <SectionHeading
+          id="services-title"
           eyebrow="What I do"
           title="Creative"
           highlight="Services"

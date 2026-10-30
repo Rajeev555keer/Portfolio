@@ -31,7 +31,7 @@ export const plans: Plan[] = [
     name: "YouTube Video Editing",
     blurb: "Full long-form post-production for serious creators.",
     perVideo: "₹1,499",
-    monthly: "₹19,999",
+    monthly: "₹9,599",
     monthlyNote: "8 videos / month",
     popular: true,
     features: [
@@ -49,7 +49,7 @@ export const plans: Plan[] = [
     name: "Cinematic & Brand Films",
     blurb: "High-end edits where every frame has to land.",
     perVideo: "₹3,999",
-    monthly: "₹34,999",
+    monthly: "₹12,799",
     monthlyNote: "4 films / month",
     features: [
       "Cinematic grade in DaVinci Resolve",

@@ -66,7 +66,7 @@ export function Pricing() {
               exit={{ opacity: 0 }}
               className="mt-4 text-center text-xs text-primary"
             >
-              Save up to 25% with a monthly retainer
+              Save 20% on every plan with a monthly retainer
             </motion.p>
           ) : null}
         </AnimatePresence>

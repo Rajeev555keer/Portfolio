@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://editor-rajeev-keer.vercel.app/sitemap.xml

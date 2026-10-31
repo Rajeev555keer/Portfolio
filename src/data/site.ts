@@ -15,22 +15,32 @@ export const site = {
 export const navLinks = [
   { label: "Home", to: "/" },
   { label: "Portfolio", to: "/portfolio" },
+  { label: "About", to: "/about" },
   { label: "Pricing", to: "/pricing" },
   { label: "Contact", to: "/contact" },
 ] as const;
+
+/** Real clients whose work appears in the portfolio. */
+export const clients = [
+  { name: "Life Long Learners", note: "L-Cube · CA coaching" },
+  { name: "CA Ankit Pandey", note: "YouTube educator" },
+];
 
 /** Shared head tags so every page gets a proper social preview card. */
 export function pageMeta({
   title,
   description,
   path,
+  image,
 }: {
   title: string;
   description: string;
   path: string;
+  /** Site-relative image for the preview card; defaults to the branded 1200x630 card. */
+  image?: string;
 }) {
   const url = `${site.url}${path}`;
-  const image = `${site.url}/og-image.jpg`;
+  const imageUrl = `${site.url}${image ?? "/og-image.jpg"}`;
   return {
     meta: [
       { title },
@@ -39,13 +49,17 @@ export function pageMeta({
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:url", content: url },
-      { property: "og:image", content: image },
-      { property: "og:image:width", content: "1200" },
-      { property: "og:image:height", content: "630" },
+      { property: "og:image", content: imageUrl },
+      ...(image
+        ? []
+        : [
+            { property: "og:image:width", content: "1200" },
+            { property: "og:image:height", content: "630" },
+          ]),
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
-      { name: "twitter:image", content: image },
+      { name: "twitter:image", content: imageUrl },
     ],
     links: [{ rel: "canonical", href: url }],
   };

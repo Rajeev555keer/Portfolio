@@ -10,15 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ShowcaseRouteImport } from './routes/showcase'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as StartRouteImport } from './routes/start'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
+import { Route as WorkProjectIdRouteImport } from './routes/work.$projectId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -41,61 +50,114 @@ const ShowcaseRoute = ShowcaseRouteImport.update({
   path: '/showcase',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StartRoute = StartRouteImport.update({
+  id: '/start',
+  path: '/start',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TestimonialsRoute = TestimonialsRouteImport.update({
   id: '/testimonials',
   path: '/testimonials',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkProjectIdRoute = WorkProjectIdRouteImport.update({
+  id: '/work/$projectId',
+  path: '/work/$projectId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
   '/showcase': typeof ShowcaseRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/start': typeof StartRoute
   '/testimonials': typeof TestimonialsRoute
+  '/work/$projectId': typeof WorkProjectIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
   '/showcase': typeof ShowcaseRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/start': typeof StartRoute
   '/testimonials': typeof TestimonialsRoute
+  '/work/$projectId': typeof WorkProjectIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/portfolio': typeof PortfolioRoute
   '/pricing': typeof PricingRoute
   '/showcase': typeof ShowcaseRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/start': typeof StartRoute
   '/testimonials': typeof TestimonialsRoute
+  '/work/$projectId': typeof WorkProjectIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/contact' | '/portfolio' | '/pricing' | '/showcase' | '/testimonials'
-  fileRoutesByTo: FileRoutesByTo
-  to:
-    '/' | '/contact' | '/portfolio' | '/pricing' | '/showcase' | '/testimonials'
-  id:
-    | '__root__'
     | '/'
+    | '/about'
     | '/contact'
     | '/portfolio'
     | '/pricing'
     | '/showcase'
+    | '/sitemap.xml'
+    | '/start'
     | '/testimonials'
+    | '/work/$projectId'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/portfolio'
+    | '/pricing'
+    | '/showcase'
+    | '/sitemap.xml'
+    | '/start'
+    | '/testimonials'
+    | '/work/$projectId'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/portfolio'
+    | '/pricing'
+    | '/showcase'
+    | '/sitemap.xml'
+    | '/start'
+    | '/testimonials'
+    | '/work/$projectId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   PortfolioRoute: typeof PortfolioRoute
   PricingRoute: typeof PricingRoute
   ShowcaseRoute: typeof ShowcaseRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  StartRoute: typeof StartRoute
   TestimonialsRoute: typeof TestimonialsRoute
+  WorkProjectIdRoute: typeof WorkProjectIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -105,6 +167,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -135,6 +204,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShowcaseRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/start': {
+      id: '/start'
+      path: '/start'
+      fullPath: '/start'
+      preLoaderRoute: typeof StartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/testimonials': {
       id: '/testimonials'
       path: '/testimonials'
@@ -142,16 +225,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TestimonialsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/$projectId': {
+      id: '/work/$projectId'
+      path: '/work/$projectId'
+      fullPath: '/work/$projectId'
+      preLoaderRoute: typeof WorkProjectIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   PortfolioRoute: PortfolioRoute,
   PricingRoute: PricingRoute,
   ShowcaseRoute: ShowcaseRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  StartRoute: StartRoute,
   TestimonialsRoute: TestimonialsRoute,
+  WorkProjectIdRoute: WorkProjectIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

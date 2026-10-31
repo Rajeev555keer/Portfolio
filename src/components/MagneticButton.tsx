@@ -8,6 +8,7 @@ type Props = {
   variant?: "primary" | "ghost" | "outline";
   to?: string;
   hash?: string;
+  search?: Record<string, string>;
   href?: string;
   onClick?: () => void;
   className?: string;
@@ -18,10 +19,8 @@ const base =
   "relative inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors duration-300";
 
 const styles = {
-  primary:
-    "bg-primary text-primary-foreground hover:bg-primary/90 glow-cyan font-semibold",
-  outline:
-    "glass text-foreground hover:border-primary/50 hover:text-primary",
+  primary: "bg-primary text-primary-foreground hover:bg-primary/90 glow-cyan font-semibold",
+  outline: "glass text-foreground hover:border-primary/50 hover:text-primary",
   ghost: "text-muted-foreground hover:text-primary",
 };
 
@@ -30,6 +29,7 @@ export function MagneticButton({
   variant = "primary",
   to,
   hash,
+  search,
   href,
   onClick,
   className,
@@ -76,13 +76,24 @@ export function MagneticButton({
   }
   if (to) {
     return (
-      <Link to={to} hash={hash} aria-label={ariaLabel} className="inline-flex rounded-full">
+      <Link
+        to={to}
+        hash={hash}
+        search={search}
+        aria-label={ariaLabel}
+        className="inline-flex rounded-full"
+      >
         {inner}
       </Link>
     );
   }
   return (
-    <button type="button" onClick={onClick} aria-label={ariaLabel} className="inline-flex rounded-full">
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={ariaLabel}
+      className="inline-flex rounded-full"
+    >
       {inner}
     </button>
   );

@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { Check, X } from "lucide-react";
 import { useState } from "react";
 import { plans, addOns, comparison } from "@/data/pricing";
-import { site } from "@/data/site";
+import { planService } from "@/data/brief";
 import { MagneticButton } from "./MagneticButton";
 import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
@@ -117,7 +117,11 @@ export function Pricing() {
 
                 <div className="mt-7">
                   <MagneticButton
-                    href={`${site.whatsapp}?text=${encodeURIComponent(`Hi Rajeev, I'm interested in the ${p.name} plan (${mode === "video" ? "per video" : "monthly"}).`)}`}
+                    to="/start"
+                    search={{
+                      service: planService[p.id],
+                      ...(mode === "monthly" ? { monthly: "true" } : {}),
+                    }}
                     variant={p.popular ? "primary" : "outline"}
                     className="w-full"
                   >

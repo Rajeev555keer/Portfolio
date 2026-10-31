@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { Mail, MessageCircle, Instagram, Youtube } from "lucide-react";
 import { site } from "@/data/site";
 import { MagneticButton } from "./MagneticButton";
@@ -65,6 +66,12 @@ export function Contact({ immediate = false }: { immediate?: boolean }) {
               <Mail className="size-4" /> {site.email}
             </MagneticButton>
           </div>
+          <p className="mt-5 text-sm text-muted-foreground">
+            Prefer to send a full brief?{" "}
+            <Link to="/start" className="text-primary underline-offset-4 hover:underline">
+              Fill the project form →
+            </Link>
+          </p>
         </Reveal>
 
         <div className="mt-12 grid gap-4 text-left sm:grid-cols-3">

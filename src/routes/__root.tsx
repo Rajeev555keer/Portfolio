@@ -17,28 +17,54 @@ import { Footer } from "@/components/Footer";
 import { Ambient } from "@/components/Ambient";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { CustomCursor } from "@/components/CustomCursor";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { site } from "@/data/site";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-[80vh] items-center justify-center px-4 pt-24">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <p className="font-mono text-[11px] tracking-[0.28em] text-primary uppercase">Error 404</p>
+        <h1 className="mt-4 text-[clamp(4rem,18vw,8rem)] leading-none font-semibold">
+          <span className="text-gradient">404</span>
+        </h1>
+        <h2 className="mt-4 text-xl font-semibold">This cut didn't make the final edit.</h2>
         <p className="mt-2 text-sm text-muted-foreground">
           The page you're looking for doesn't exist or has been moved.
         </p>
-        <div className="mt-6">
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Go home
+          </Link>
+          <Link
+            to="/portfolio"
+            className="glass inline-flex min-h-11 items-center justify-center rounded-full px-6 text-sm font-medium transition-colors hover:text-primary"
+          >
+            See portfolio
           </Link>
         </div>
       </div>
     </div>
   );
 }
+
+/** Structured data so search engines know who the site belongs to. */
+const personJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  jobTitle: site.role,
+  url: site.url,
+  image: `${site.url}/og-image.jpg`,
+  email: `mailto:${site.email}`,
+  telephone: site.phone.replace(/\s/g, ""),
+  address: { "@type": "PostalAddress", addressCountry: "IN" },
+  sameAs: [site.instagram, site.youtube],
+  knowsAbout: ["Video editing", "Reels and Shorts", "YouTube thumbnails", "Motion graphics"],
+});
 
 function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
@@ -124,6 +150,7 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: personJsonLd }} />
       </head>
       <body>
         {children}
@@ -153,6 +180,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <Footer />
+      <WhatsAppButton />
     </QueryClientProvider>
   );
 }

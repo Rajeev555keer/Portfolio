@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/Hero";
-import { Software } from "@/components/Software";
-import { Experience } from "@/components/Experience";
+import { Clients } from "@/components/Clients";
 import { Projects } from "@/components/Projects";
 import { Services } from "@/components/Services";
 import { Process } from "@/components/Process";
@@ -23,15 +22,15 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+// Toolkit and experience live on /about to keep the home page focused on the work.
 function Index() {
   return (
     <>
       <Hero />
+      <Clients />
       <Projects items={featured} withPortfolioLink />
       <Services />
       <Process />
-      <Software />
-      <Experience />
       <FAQ />
       <Contact />
     </>

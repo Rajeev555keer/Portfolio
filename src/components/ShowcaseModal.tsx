@@ -1,7 +1,10 @@
 import { AnimatePresence, motion } from "motion/react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { X, ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import { useEffect } from "react";
 import type { Project } from "@/data/projects";
+import { site } from "@/data/site";
+import { ShareButton } from "./ShareButton";
 import { cn } from "@/lib/utils";
 
 export function ShowcaseModal({
@@ -118,7 +121,18 @@ export function ShowcaseModal({
                 </>
               ) : null}
 
-              <div className="mt-8 flex items-center justify-between gap-3 border-t border-border pt-5">
+              <div className="mt-6 flex flex-wrap items-center gap-2">
+                <Link
+                  to="/work/$projectId"
+                  params={{ projectId: project.id }}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-4 text-sm transition-colors hover:border-primary/50 hover:text-primary"
+                >
+                  Open project page <ArrowUpRight className="size-4" />
+                </Link>
+                <ShareButton url={`${site.url}/work/${project.id}`} title={project.title} />
+              </div>
+
+              <div className="mt-6 flex items-center justify-between gap-3 border-t border-border pt-5">
                 <button
                   type="button"
                   onClick={onPrev}

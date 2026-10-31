@@ -2,7 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { navLinks, site } from "@/data/site";
+import { navLinks } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
@@ -59,10 +59,8 @@ export function Navbar() {
           </ul>
 
           <div className="flex items-center gap-2">
-            <a
-              href={site.whatsapp}
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              to="/start"
               className="hidden items-center gap-2 rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground transition-transform duration-300 hover:scale-[1.03] sm:inline-flex"
             >
               <span className="relative flex size-1.5" aria-hidden="true">
@@ -70,7 +68,7 @@ export function Navbar() {
                 <span className="relative inline-flex size-1.5 rounded-full bg-primary-foreground" />
               </span>
               Hire Me
-            </a>
+            </Link>
             <button
               type="button"
               aria-label={open ? "Close menu" : "Open menu"}
@@ -113,14 +111,13 @@ export function Navbar() {
                 </motion.li>
               ))}
             </ul>
-            <a
-              href={site.whatsapp}
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              to="/start"
+              onClick={() => setOpen(false)}
               className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground"
             >
-              Let's Work Together
-            </a>
+              Start a project
+            </Link>
           </motion.div>
         ) : null}
       </AnimatePresence>

@@ -1,5 +1,7 @@
 import theAlarm from "@/assets/video-the-alarm.mp4";
+import theAlarmPoster from "@/assets/poster-video-the-alarm.jpg";
 import divinity from "@/assets/video-3d-divinity.mp4";
+import divinityPoster from "@/assets/poster-video-3d-divinity.jpg";
 import lcubePromo from "@/assets/video-lcube-ca-final-promo.mp4";
 import lcubePromoPoster from "@/assets/poster-video-lcube-ca-final-promo.jpg";
 import ankitIntro from "@/assets/video-ankit-channel-intro.mp4";
@@ -50,7 +52,7 @@ export const projects: Project[] = [
       "A short cinematic teaser built on mood: a cold teal grade, slow push-ins, practical light and a bold title card timed to the sound design.",
     tools: ["DaVinci Resolve", "After Effects"],
     video: theAlarm,
-    posterTime: 7,
+    image: theAlarmPoster,
     format: "16:9 · 12s",
     featured: true,
   },
@@ -62,7 +64,7 @@ export const projects: Project[] = [
       "A 3D cinematic that moves from a temple environment to a glowing Shiva reveal — camera moves, light rays and a slow, reverent edit rhythm.",
     tools: ["Unreal Engine", "DaVinci Resolve"],
     video: divinity,
-    posterTime: 16,
+    image: divinityPoster,
     format: "16:9 · 23s",
     featured: true,
   },

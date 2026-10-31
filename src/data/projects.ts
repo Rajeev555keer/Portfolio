@@ -72,7 +72,7 @@ export const projects: Project[] = [
     category: "Videos",
     description:
       "Brand promo for the L-Cube CA Final batch — animated logo reveal, a photo-collage sequence linked with red string, and bold kinetic titles introducing the faculty.",
-    tools: ["CapCut"],
+    tools: ["Premiere Pro"],
     video: lcubePromo,
     image: lcubePromoPoster,
     format: "16:9 · 1:08",
@@ -83,7 +83,7 @@ export const projects: Project[] = [
     category: "Videos",
     description:
       "A 13-second YouTube channel intro — animated search bar, cut-out portrait over photo cards, a subscribe-button click and the channel card reveal.",
-    tools: ["CapCut"],
+    tools: ["Premiere Pro"],
     video: ankitIntro,
     image: ankitIntroPoster,
     format: "16:9 · 13s",
@@ -120,7 +120,7 @@ export const projects: Project[] = [
     category: "Reels",
     description:
       "Talking-head exam-prep short — highlighted Hindi captions, ICAI website B-roll and torn-paper transitions keep an 80-second explainer moving.",
-    tools: ["CapCut"],
+    tools: ["Premiere Pro"],
     video: top6Tips,
     image: top6TipsPoster,
     vertical: true,
@@ -133,7 +133,7 @@ export const projects: Project[] = [
     category: "Reels",
     description:
       "Personal-finance explainer shot selfie-style — tight jump cuts plus animated bill and calculator graphics that make each point visual.",
-    tools: ["CapCut"],
+    tools: ["Premiere Pro"],
     video: insurance,
     image: insurancePoster,
     vertical: true,
@@ -145,7 +145,7 @@ export const projects: Project[] = [
     category: "Reels",
     description:
       "Office talking-head short for the last 25–30 days before CA exams — sticky-note graphics, Hindi captions and focus-pull transitions.",
-    tools: ["CapCut"],
+    tools: ["Premiere Pro"],
     video: caProblems,
     image: caProblemsPoster,
     vertical: true,

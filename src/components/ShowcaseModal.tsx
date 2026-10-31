@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect } from "react";
 import type { Project } from "@/data/projects";
+import { cn } from "@/lib/utils";
 
 export function ShowcaseModal({
   project,
@@ -61,7 +62,12 @@ export function ShowcaseModal({
               <X className="size-4" />
             </button>
 
-            <div className="relative aspect-video w-full overflow-hidden rounded-t-3xl bg-black">
+            <div
+              className={cn(
+                "relative w-full overflow-hidden rounded-t-3xl bg-black",
+                project.vertical ? "flex justify-center" : "aspect-video",
+              )}
+            >
               {project.video ? (
                 <video
                   key={project.id}
@@ -70,7 +76,11 @@ export function ShowcaseModal({
                   controls
                   autoPlay
                   playsInline
-                  className="size-full object-contain"
+                  className={
+                    project.vertical
+                      ? "aspect-[9/16] h-[70dvh] max-h-[760px] w-auto"
+                      : "size-full object-contain"
+                  }
                 />
               ) : (
                 <img
@@ -90,19 +100,23 @@ export function ShowcaseModal({
                 {project.description}
               </p>
 
-              <p className="mt-6 font-mono text-[11px] tracking-[0.24em] text-muted-foreground uppercase">
-                Software used
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {project.tools.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs text-primary"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
+              {project.tools.length > 0 ? (
+                <>
+                  <p className="mt-6 font-mono text-[11px] tracking-[0.24em] text-muted-foreground uppercase">
+                    Software used
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {project.tools.map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs text-primary"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </>
+              ) : null}
 
               <div className="mt-8 flex items-center justify-between gap-3 border-t border-border pt-5">
                 <button

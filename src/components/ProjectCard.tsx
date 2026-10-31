@@ -60,7 +60,12 @@ export function ProjectCard({ project, onOpen }: { project: Project; onOpen: () 
         aria-label={`View project: ${project.title}`}
         className="group glass relative flex h-full w-full flex-col overflow-hidden rounded-2xl text-left transition-all duration-500 hover:border-primary/40 hover:shadow-[var(--glow-cyan)]"
       >
-        <div className="relative aspect-video overflow-hidden bg-secondary">
+        <div
+          className={cn(
+            "relative overflow-hidden bg-secondary",
+            project.vertical ? "aspect-[9/16]" : "aspect-video",
+          )}
+        >
           {project.video ? (
             <video
               ref={videoRef}
@@ -68,7 +73,8 @@ export function ProjectCard({ project, onOpen }: { project: Project; onOpen: () 
               muted
               loop
               playsInline
-              preload="metadata"
+              // With a poster image the clip only needs to load once someone hovers.
+              preload={project.image ? "none" : "metadata"}
               className="absolute inset-0 size-full object-cover"
             />
           ) : null}
@@ -106,22 +112,38 @@ export function ProjectCard({ project, onOpen }: { project: Project; onOpen: () 
           ) : null}
         </div>
 
-        <div className="flex flex-1 flex-col p-5">
+        <div className={cn("flex flex-1 flex-col", project.vertical ? "p-3.5 sm:p-5" : "p-5")}>
           <div className="flex items-start justify-between gap-3">
-            <h3 className="text-lg leading-snug font-semibold">{project.title}</h3>
+            <h3
+              className={cn(
+                "leading-snug font-semibold",
+                project.vertical ? "text-sm sm:text-base" : "text-lg",
+              )}
+            >
+              {project.title}
+            </h3>
             <ArrowUpRight className="mt-1 size-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
           </div>
-          <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{project.description}</p>
-          <div className="mt-auto flex flex-wrap gap-1.5 pt-4">
-            {project.tools.map((t) => (
-              <span
-                key={t}
-                className="rounded-full border border-border px-2.5 py-1 text-[11px] text-muted-foreground"
-              >
-                {t}
-              </span>
-            ))}
-          </div>
+          <p
+            className={cn(
+              "mt-2 line-clamp-2 text-sm text-muted-foreground",
+              project.vertical && "hidden sm:block",
+            )}
+          >
+            {project.description}
+          </p>
+          {project.tools.length > 0 ? (
+            <div className="mt-auto flex flex-wrap gap-1.5 pt-4">
+              {project.tools.map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full border border-border px-2.5 py-1 text-[11px] text-muted-foreground"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          ) : null}
         </div>
       </button>
     </motion.div>

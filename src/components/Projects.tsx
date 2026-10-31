@@ -15,7 +15,7 @@ export function Projects({
   eyebrow = "Selected work",
   title = "Featured",
   highlight = "Work",
-  description = "Real edits and thumbnails — hover to preview, click to open the full piece.",
+  description = "Real edits, reels and thumbnails — hover to preview, click to open the full piece.",
 }: {
   items?: Project[];
   withFilters?: boolean;
@@ -81,12 +81,14 @@ export function Projects({
           </div>
         ) : null}
 
-        <motion.div layout className="mt-10 grid gap-6 sm:grid-cols-2">
+        {/* Landscape cards take half a row, portrait reels a third (half on phones). */}
+        <motion.div layout className="mt-10 grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-6">
           <AnimatePresence mode="popLayout">
             {filtered.map((p, i) => (
               <motion.div
                 key={p.id}
                 layout
+                className={p.vertical ? "col-span-1 md:col-span-2" : "col-span-2 md:col-span-3"}
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.96 }}

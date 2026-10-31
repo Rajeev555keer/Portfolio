@@ -9,15 +9,17 @@ import { projects } from "@/data/projects";
 import { pageMeta, site } from "@/data/site";
 
 const showreel = projects.find((p) => p.id === "3d-divinity")!;
-const videoCount = projects.filter((p) => p.category === "Videos").length;
-const thumbCount = projects.filter((p) => p.category === "Thumbnails").length;
+const counts = (["Videos", "Reels", "Thumbnails"] as const).map((category) => ({
+  category,
+  count: projects.filter((p) => p.category === category).length,
+}));
 
 export const Route = createFileRoute("/portfolio")({
   head: () =>
     pageMeta({
       title: "Portfolio — Rajeev Keer, Video Editor & Graphic Designer",
       description:
-        "Cinematic video edits and YouTube thumbnails by Rajeev Keer. Watch the work, then get in touch for your next video.",
+        "Cinematic video edits, reels & shorts and YouTube thumbnails by Rajeev Keer. Watch the work, then get in touch for your next video.",
       path: "/portfolio",
     }),
   component: PortfolioPage,
@@ -60,20 +62,19 @@ function PortfolioPage() {
             </Reveal>
             <Reveal immediate delay={0.1}>
               <p className="flex gap-6 font-mono text-xs tracking-widest text-muted-foreground uppercase">
-                <span>
-                  <span className="font-display text-2xl text-foreground">{videoCount}</span> Videos
-                </span>
-                <span>
-                  <span className="font-display text-2xl text-foreground">{thumbCount}</span>{" "}
-                  Thumbnails
-                </span>
+                {counts.map((c) => (
+                  <span key={c.category}>
+                    <span className="font-display text-2xl text-foreground">{c.count}</span>{" "}
+                    {c.category}
+                  </span>
+                ))}
               </p>
             </Reveal>
           </div>
           <Reveal immediate delay={0.12}>
             <p className="mt-5 max-w-xl text-muted-foreground">
-              Cinematic edits and YouTube thumbnails — every piece cut, graded or designed by me.
-              Hover a card to preview, click to see it full size.
+              Cinematic edits, short-form reels for educators and YouTube thumbnails — every piece
+              cut, graded or designed by me. Hover a card to preview, click to watch it full size.
             </p>
           </Reveal>
 
@@ -123,9 +124,9 @@ function PortfolioPage() {
       <Projects
         withFilters
         eyebrow="All work"
-        title="Videos &"
+        title="Videos, Reels &"
         highlight="Thumbnails"
-        description="Filter by type. Video cards play on hover; thumbnails open full size."
+        description="Filter by type. Video and reel cards play on hover; click any card to watch or view it full size."
       />
 
       <section className="px-4 pb-24" aria-labelledby="portfolio-cta">

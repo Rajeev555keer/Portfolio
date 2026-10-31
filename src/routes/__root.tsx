@@ -9,6 +9,7 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -181,6 +182,8 @@ function RootComponent() {
       </main>
       <Footer />
       <WhatsAppButton />
+      {/* Cookieless page-view stats; needs Web Analytics enabled on the Vercel project. */}
+      <Analytics />
     </QueryClientProvider>
   );
 }
